@@ -41,19 +41,19 @@ struct Player {
 };
 
 
-const int MAX_PLAYERS = 100;
+const int MAX_PLAYERS = 20;
 
 
 void addPlayer(Player team[], int& playerCount) {
     if (playerCount >= MAX_PLAYERS) {
-        cout << "Досягнуто максимальну кількість гравців!\n";
+        cout << "Максимальна кількість гравців!\n";
         return;
     }
     Player player;
     cout << "Введіть ім'я гравця: ";
     cin.ignore();
     getline(cin, player.name);
-    cout << "Введіть позицію (наприклад, нападник, захисник): ";
+    cout << "Введіть позицію (наприклад : "нападник", "захисник"): ";
     getline(cin, player.position);
     cout << "Введіть кількість голів: ";
     cin >> player.goals;
@@ -128,11 +128,11 @@ void updatePlayerData(Player team[], int playerCount, const string& name) {
             cin >> team[i].matches;
             cout << "Введіть новий середній рейтинг: ";
             cin >> team[i].rating;
-            cout << "Дані успішно оновлено!\n";
+            cout << "Дані оновлено!\n";
             return;
         }
     }
-    cout << "Гравця з таким ім'ям не знайдено.\n";
+    cout << "Гравця не знайдено.\n";
 }
 
 
@@ -165,7 +165,7 @@ int main() {
             << "2. Вивести інформацію про всіх гравців\n"
             << "3. Пошук гравців за позицією\n"
             << "4. Підрахувати загальну кількість голів команди\n"
-            << "5. Знайти найкращого бомбардира\n"
+            << "5. Знайти найкращого\n"
             << "6. Знайти гравця з найвищим рейтингом\n"
             << "7. Оновити статистику гравця\n"
             << "8. Вивести оптимальний склад за рейтингом\n"
@@ -193,7 +193,7 @@ int main() {
             break;
         case 5: {
             Player topScorer = findTopScorer(team, playerCount);
-            cout << "Найкращий бомбардир: " << topScorer.name
+            cout << "Найкращий : " << topScorer.name
                 << " (Голи: " << topScorer.goals << ")\n";
             break;
         }
@@ -215,10 +215,10 @@ int main() {
             getOptimalLineup(team, playerCount);
             break;
         case 0:
-            cout << "Вихід з програми.\n";
+            cout << "Вихід.\n";
             break;
         default:
-            cout << "Невірний вибір. Спробуйте ще раз.\n";
+            cout << "Невірний вибір.\n";
         }
     } while (choice != 0);
 
